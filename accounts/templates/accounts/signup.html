@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: #4d0263; color: white;height: 100%;">
+    <div class="container" style="padding-top:12.5% ; padding-bottom:12.5% ;" >
+        
+        
+        <div class="row justify-content-center" style="top:50%">
+            <div class="col-lg-6">
+                
+                <span style="color: #e374bc; font-size: 70px; font-family: cursive;">Welcome!<br></span> 
+                <span style="font-family: cursive; font-size: 40px; padding-top: 10px;">You are just one step away from posting product. Signup to showcase your product. </span><br>
+            </div>
+            <div class="col-lg-6">
+                <div style="padding-left: 20%;">
+
+                    <h1 style="font-size: 50px;">Sign Up</h1>
+                    <br>
+                    <form method="POST" action="{% url 'signup' %}">{% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <input type="password" name="password" placeholder="Password" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <input type="password" name="password2" placeholder="Confirm Password" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <input type="submit" value="Sign Up" class="btn btn-primary"  style="width: 100px;border-radius:25px; background-color:#e374bc ; color: white; border: 0;">
+
+                    </form>
+                    {% if error %}
+                    <br>
+                    {{error}}
+
+
+                {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

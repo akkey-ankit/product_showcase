@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: #4d0263; color: white;height: 100%;">
+    <div class="container" style="padding-top:9% ; padding-bottom:9% ;" >
+        
+        <br>
+        <div class="row justify-content-center" style="top:50%">
+            <div class="col-lg-6">
+                <br><br><br><br>
+                <span style="color: #e374bc; font-size: 60px; font-family: cursive;">Let the world see<br></span> 
+                <span style="font-family: cursive; font-size: 40px; padding-top: 10px;">Register your wonderful product and we will showcase it to the world.</span><br><br>
+            </div>
+            <div class="col-lg-6">
+                <div style="padding-left: 20px;">
+                    
+                    <h1 style="font-size: 50px;" class="ppp">Register Product</h1>
+                    
+                    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">{% csrf_token %}
+                    <br>
+                    <input type="text" name="title" placeholder="Title" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <input type="textbox" name="body" placeholder="Description" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <input type="text" name="url" placeholder="URL" style="padding:2% 5%; border-radius:25px;"size="30">
+                    <br>
+                    <br>
+                    <p style="font-size: larger;">Upload Icon:</p>
+                    <input type="file" name="icon" placeholder="Icon" class="file-upload1">
+                    <br>
+                    <br>
+                    <p style="font-size: larger;">Upload Image:</p>
+                    <input type="file" name="image" placeholder="Image"  class="file-upload2">
+                    <br>
+                    <br>
+                    <input type="submit" value="Register" class="btn btn-primary" style="width: 100px;border-radius:25px; background-color:#e374bc ; color: white; border: 0;">
+
+
+                    </form>
+                    {% if error %}
+                    <br>
+                        {{error}}
+                        
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: #4d0263; color: white;">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <br>
+        <br>
+
+        <h1 style="font-family: cursive; text-align: center; font-size: 70px;">Showcase</h1>
+        <br><br>
+        <br>
+        {% for product in products.all %}
+
+
+
+            <div class="row" style="padding: 10px 5px; border: solid 3px #e374bc;">
+                <div class="col-lg-3 col-sm-4" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
+                    <img src="{{product.icon.url}}" alt="" style="width: 100%; border: #e374bc solid 3px;">
+                </div>
+                <div class="col-lg-6 col-sm-8"  onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
+                    <h2>{{product.title}}</h2>
+                    <br>
+                    <p style="font-size: large;">
+                        {{product.summary}}
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-3 mt-2">
+                    <a href="javascript:{document.getElementById('upvote').submit()}"><Button class="btn btn-primary btn-lg btn-block">Upvote ({{product.votes_total}})</Button></a>
+                </div>
+            </div>
+            <br>
+            <br>
+
+
+        <form action="{% url 'upvote' product.id %}" method="POST" id="upvote">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
+
+        {% endfor %}
+        <br>
+        <br>
+    </div>
+</div>
+
+{% endblock %}
